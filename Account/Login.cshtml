@@ -1,0 +1,103 @@
+﻿@model SOP.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap-yeti.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+
+
+<style type="text/css">
+    .error {
+        color: red;
+        text-decoration: solid;
+    }
+
+
+    .margining {
+        margin-left: 25%;
+    }
+
+    .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    body {
+        margin: -5px;
+        background-color: #0f3e4a !important;
+        overflow-x:hidden;
+    }
+
+    .mainHead {
+        background-color:#008cba;
+    }
+
+    .underline {
+        color: #fff;
+        font-family: serif;
+        font-weight: 400;
+        display: inline-block;
+        height: 50px;
+        box-shadow: 0 25px 0 -23px #fff;
+    }
+
+    .form-login {
+        background: #008cba;
+    }
+
+    .inline {
+        display: inline-block;
+    }
+    .white{
+        color:white;
+    }
+    .white:hover{
+        color:aliceblue;
+    }
+    .clr-btn{
+        background-color:#007196;
+    }
+    
+</style>
+<body onload="deleteAllCookies()">
+    <div class="container" style="background-color:white; background-image:url('/img.jpg')">
+        <div class="page-header center-block text-center container mainHead"><h2 class="underline">C.M.A Paradise Online Portal</h2></div>
+
+
+
+
+        <div class="wrapper">
+            <form class="form-signin form-login text-center" action="~/Account/Login" method="post">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <h3 class="form-signin-heading text-center white" style="font-family:serif;">Login With Your Credentials</h3>
+
+                <div>
+                    @Html.TextBoxFor(a => a.UserName, new { placeholder = "UserName", @class = "form-control text-center inline", required = "" })
+
+                    @Html.PasswordFor(a => a.Password, new { placeholder = "Password", @class = "form-control text-center  inline", required = "" })
+
+                    <div>
+
+                        <input class="btn btn-md btn-primary text-center clr-btn" type="submit" value="Login" style="width:100%; border:none;" />
+
+                    </div>
+                    @*@Html.ActionLink("Forgot Password?", "ForgotPassword", "Account", new { @class = "text-center  white" })*@
+                </div>
+                @if (TempData["ErrorMSG"] != null)
+            {
+                    <span class="glyphicon glyphicon-alert alert alert-danger" style="margin-top:5px; font-size:14px "> @TempData["ErrorMSG"] </span>
+
+                }
+
+
+            </form>
+        </div>
+
+    </div>
+</body>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "UserDashBoard";
+}
+<br>
+
+    <fieldset>
+        <div class="panel panel-success">
+            <div class="panel-heading"> User DashBoard </div>
+
+            <div class="panel-body">
+                @if (Session["UserName"] != null)
+            { <h4>
+                    Welcome @Session["UserName"].ToString()!
+                </h4>
+                }
+            </div>
+        </div>
+           
+                @*<li>@Html.ActionLink("Attendance", "Logout", "Account", new { area = "" }, new { @class = "" })</li>*@
+                
+</fieldset>
+

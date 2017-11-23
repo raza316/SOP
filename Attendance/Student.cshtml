@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SOP.Models.Student>
+
+
+<script type="text/javascript" src="~/scripts/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+    alert("jQuery is working");
+    $(document).ready(function () {
+        $("#Date").input({
+            dateFormat: "dd-mm-yy",
+            minDate: -0,
+            maxDate: "+0M +0D"
+
+        });
+    });
+
+</script>
+@{
+    ViewBag.Title = "Student";
+    List<SelectListItem> li = new List<SelectListItem>();
+    li.Add(new SelectListItem() { Text = "Present", Value = "P" });
+    li.Add(new SelectListItem() { Text = "Absent", Value = "A" });
+    li.Add(new SelectListItem() { Text = "Late", Value = "Lt" });
+}
+
+<h2>Enter the Attendance for Class: @ViewBag.Message</h2>
+
+<form method="post" action="/Attendance/Save">
+
+    <table class="table table-bordered table-hover table-responsive">
+        <tr>
+            <th class="text-center info">
+                Student GRNO
+            </th>
+            <th class="text-center info">
+                Student Name
+            </th>
+            <th class="info">
+                Date: <input type="date" name="date" id="Date" value="@DateTime.Now" />
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student_GRNO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student_Name)
+                </td>
+                <td class="dropdown">
+                    @Html.DropDownList("Attendance", li, li)
+
+
+                    @Html.Hidden("GRNO", item.Student_GRNO)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <input class="btn btn-md btn-block btn-primary" type="submit" value="Save" />
+    </div>
+</form>

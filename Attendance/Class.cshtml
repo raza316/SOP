@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SOP.Models.Class>
+
+@{
+    ViewBag.Title = "Class";
+}
+
+
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap-yeti.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+    body{
+        background-color:#fff !important;
+    }
+    th{
+        font-size:18px;
+        font-weight:700;
+    }
+    td{
+        font-size:16px;
+        font-weight:500;
+        color:black !important;
+    }
+</style>
+<div style="padding-top:25px"></div>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th class="info text-center">CLASSES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var classes in Model)
+            {
+                <tr>
+                    <td class="text-center">@Html.ActionLink(classes.Class_Name, "Student", new { id = classes.Class_ID })</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+

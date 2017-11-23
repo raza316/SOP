@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="61be017d9a6543f58674a35a0ec95c5c" Name="Diagram1">
+        <EntityTypeShape EntityType="SOPModel.Attendance" Width="1.5" PointX="7.125" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Class" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Student" Width="1.5" PointX="3.875" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.User" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="SOPModel.FK_Attendance_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Attendance_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Student_Class" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SOPModel.ClassHead" Width="1.5" PointX="3" PointY="6.375" />
+        <EntityTypeShape EntityType="SOPModel.Day" Width="1.5" PointX="3" PointY="15.75" />
+        <EntityTypeShape EntityType="SOPModel.Schedule" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="SOPModel.Slot" Width="1.5" PointX="3" PointY="13.375" />
+        <EntityTypeShape EntityType="SOPModel.StudentHead" Width="1.5" PointX="6.125" PointY="5.875" />
+        <EntityTypeShape EntityType="SOPModel.Subject" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="SOPModel.sysdiagram" Width="1.5" PointX="8.375" PointY="5.75" />
+        <AssociationConnector Association="SOPModel.FK_ClassHead_Class" />
+        <AssociationConnector Association="SOPModel.FK_Schedule_Class" />
+        <AssociationConnector Association="SOPModel.FK_Subject_Subject" />
+        <AssociationConnector Association="SOPModel.FK_StudentHead_ClassHead" />
+        <AssociationConnector Association="SOPModel.FK_Schedule_Days" />
+        <AssociationConnector Association="SOPModel.FK_Schedule_Slot" />
+        <AssociationConnector Association="SOPModel.FK_Schedule_Subject" />
+        <AssociationConnector Association="SOPModel.FK_StudentHead_StudentHead" />
+        <AssociationConnector Association="SOPModel.FK_Users_Student" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

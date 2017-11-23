@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SOP</title>
+    <link href="~/Content/bootstrap-yeti.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/_bootswatch.scss" rel="stylesheet" />
+    <link href="~/Content/_variables.scss" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style type="text/css">
+
+     
+    .navbar-default .navbar-nav > li.dropdown:hover > a, 
+    .navbar-default .navbar-nav > li.dropdown:hover > a:hover,
+    .navbar-default .navbar-nav > li.dropdown:hover > a:focus {
+        
+        background-color: rgb(231, 231, 231);
+        color: rgb(85, 85, 85);
+    }
+    li.dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+    #menu li{
+        display:inline;
+    }
+    .navbar-header img {
+  height: 5.5em;
+  margin: 8px;
+}
+    .navbar-nav > li > a{
+        padding-top:3em !important;
+    }
+    .navbar-inverse .navbar-nav > li > a{
+        font-size:14px;
+        font-weight:500;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+        height:6.3em !important;
+    }
+
+        
+    </style>
+    <script type="text/javascript">
+        function del_cookie(name) {
+            document.cookie = name +
+            '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+        }
+    </script>
+    <meta name="description" content="The description of my page" />
+</head>
+<body onload="SetCookie()" onunload="del_cookie()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
+
+                <a href="~/Home/Index" class="navbar-left"><img src="/logo-school.png" /></a>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Attendance<b class="caret"></b></a>
+                            <ul class="dropdown dropdown-menu">
+                                @if (User.IsInRole("Teacher"))
+                                {
+                                    <li>@Html.ActionLink("Mark Attendance", "Class", "Attendance", new { area = "" }, new { @class = "" })</li>
+                                }
+
+                                <li>
+                                    @Html.ActionLink("View Attendance", "ClassView", "Attendance")
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+                
+                    <ul class="nav navbar-nav navbar-right navbar-collapse">
+                        <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+
+                            <ul class="dropdown dropdown-menu">
+
+
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li>
+                                        @Html.ActionLink("Log Out", "Logout", "Account", new { area = "" }, new { @class = "" })
+                                    </li>
+                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "Account", new { area = "" }, new { @class = "" })</li>
+                                }
+                                else
+                                {
+                                    <li> @Html.ActionLink("Log In", "Login", "Account", new { area = "" }, new { @class = "" })</li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+    </nav>
+    <div style="padding-top:25px"></div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="color: dodgerblue;">
+                &copy; @DateTime.Now.Year - My ASP.NET Application
+            </p>
+            <div style="width:100%; display:inline-block;">
+
+                @*&copy; @DateTime.Now.Year - My ASP.NET Application*@
+
+            </div>
+
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

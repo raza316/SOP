@@ -1,0 +1,40 @@
+﻿@model SOP.ViewModel._AttendanceViewModel
+@{
+    ViewBag.Title = "Attendance";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap-yeti.css" type="text/css" />
+
+<h2>Attendance of @ViewBag.Message</h2>
+<div>
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr class="info">
+                <th>S.No</th>
+                <th>Name</th>
+                <th>G.R.NO.</th>
+
+                @foreach (var date in Model.dates)
+                {
+                    <th>@date.ToShortDateString()</th>
+                }
+            </tr>
+        </thead>
+        @{ int sno = 1; }
+        @foreach (var std in Model.students)
+            {
+            <tbody>
+                <tr>
+                    <td>@(sno++)</td>
+                    <td>@std.Student_Name</td>
+                    <td>@std.Student_GRNO</td>
+
+                    @foreach (var dates in Model.dates)
+                {
+                        <td>@Model.dict[std.Student_GRNO + "-" + dates.Date].ToString()</td>
+                    }
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
